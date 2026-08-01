@@ -1,0 +1,14 @@
+# GitHub Language Detection Overrides
+# Force the project to prioritize Java in language statistics
+
+# Treat the entire frontend directory as vendored/generated so it doesn't skew language stats
+frontend/**/* linguist-vendored
+
+# Ensure Java files are always counted
+backend/src/main/java/**/* linguist-detectable
+backend/pom.xml linguist-detectable
+
+# Ignore documentation and assets from language stats
+README.md linguist-documentation
+backend/src/main/resources/templates/**/* linguist-documentation
+backend/src/main/resources/static/**/* linguist-documentation
