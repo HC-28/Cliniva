@@ -1,0 +1,300 @@
+/* ============================================================
+   CLINIVA — Global Design System
+   Clean Light Aesthetic | Premium Healthcare Platform
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+/* ── CSS Custom Properties (Design Tokens) ─────────────────── */
+:root {
+  /* Backgrounds */
+  --bg-void: #f0f4f8;
+  --bg-deep: #e8eef5;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f8fafc;
+  --bg-glass: rgba(255, 255, 255, 0.75);
+  --bg-glass-hover: rgba(255, 255, 255, 0.92);
+  --bg-card: rgba(255, 255, 255, 0.9);
+
+  /* Brand Accents */
+  --cyan: #0284c7;
+  --cyan-dim: rgba(2, 132, 199, 0.10);
+  --cyan-glow: rgba(2, 132, 199, 0.20);
+  --cyan-border: rgba(2, 132, 199, 0.25);
+
+  --purple: #7c3aed;
+  --purple-dim: rgba(124, 58, 237, 0.10);
+  --purple-glow: rgba(124, 58, 237, 0.20);
+
+  --mint: #059669;
+  --mint-dim: rgba(5, 150, 105, 0.10);
+  --mint-glow: rgba(5, 150, 105, 0.20);
+
+  --amber: #d97706;
+  --amber-dim: rgba(217, 119, 6, 0.10);
+
+  --rose: #e11d48;
+  --rose-dim: rgba(225, 29, 72, 0.10);
+
+  /* Text */
+  --text-primary: #0f172a;
+  --text-secondary: rgba(15, 23, 42, 0.6);
+  --text-muted: rgba(15, 23, 42, 0.38);
+  --text-accent: #0284c7;
+
+  /* Borders */
+  --border-subtle: rgba(15, 23, 42, 0.05);
+  --border-default: rgba(15, 23, 42, 0.09);
+  --border-strong: rgba(15, 23, 42, 0.15);
+  --border-accent: rgba(2, 132, 199, 0.30);
+
+  /* Sizing */
+  --sidebar-width: 72px;
+  --sidebar-expanded: 240px;
+  --header-height: 64px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+
+  /* Shadows */
+  --shadow-card: 0 2px 12px rgba(15, 23, 42, 0.08);
+  --shadow-glow-cyan: 0 0 20px rgba(2, 132, 199, 0.12);
+  --shadow-glow-purple: 0 0 20px rgba(124, 58, 237, 0.12);
+  --shadow-elevated: 0 8px 32px rgba(15, 23, 42, 0.12);
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Transitions */
+  --transition-fast: 120ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Dark Theme Tokens ────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg-void: #090e17;
+  --bg-deep: #0f172a;
+  --bg-surface: #1e293b;
+  --bg-elevated: #283548;
+  --bg-glass: rgba(30, 41, 59, 0.85);
+  --bg-glass-hover: rgba(30, 41, 59, 0.96);
+  --bg-card: rgba(30, 41, 59, 0.95);
+
+  --text-primary: #f8fafc;
+  --text-secondary: rgba(248, 250, 252, 0.7);
+  --text-muted: rgba(248, 250, 252, 0.45);
+  --text-accent: #38bdf8;
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-default: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.22);
+  --border-accent: rgba(56, 189, 248, 0.35);
+
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-elevated: 0 10px 36px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-void);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(2, 132, 199, 0.2);
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(2, 132, 199, 0.38);
+}
+
+/* ── Glassmorphism Utility ──────────────────────────────────── */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-default);
+}
+
+.glass-hover {
+  transition: background var(--transition-base), border-color var(--transition-base);
+}
+.glass-hover:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--border-strong);
+}
+
+/* ── Selection ──────────────────────────────────────────────── */
+::selection {
+  background: rgba(2, 132, 199, 0.15);
+  color: var(--cyan);
+}
+
+/* ── Pulse Animation ────────────────────────────────────────── */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes data-stream {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s var(--transition-base) both;
+}
+
+.animate-slide-in {
+  animation: slideInRight 0.3s ease both;
+}
+
+/* ── Subtle mesh background ─────────────────────────────────── */
+.starfield {
+  display: none;
+}
+
+/* ── Noise Texture Overlay ──────────────────────────────────── */
+.noise-overlay {
+  display: none;
+}
+
+/* ── Input Base ─────────────────────────────────────────────── */
+input, textarea, select {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+input::placeholder {
+  color: var(--text-muted);
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+/* ── Status Dot ─────────────────────────────────────────────── */
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.status-dot.online { background: var(--mint); }
+.status-dot.warning { background: var(--amber); }
+.status-dot.critical { background: var(--rose); }
+
+.status-dot.online::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--mint);
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* ── Mono text ──────────────────────────────────────────────── */
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+/* ── Responsive Breakpoints ───────────────────────────────── */
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .stat-cards-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .telemetry-pod-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .stat-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
